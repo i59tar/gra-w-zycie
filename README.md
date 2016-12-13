@@ -1,6 +1,15 @@
 # gra-w-zycie
 Gra w życie. Język: C/C++
 
+#changelog
+
+V0.2
+- Teraz można w terminalu wprowadzić dodatkowe zmienne:
+- - 1. zmienna - decyduje o szerokości tablicy
+- - 2. zmienna - decyduje o wysokości tablicy
+- - 3. zmienna - decyduje o odstępie czasowym między pokoleniami komórek (w milisekundach)
+Zaleca się używania odstępów czasowych większych niż 30 (ms) z powodu 'migotania' ekranu
+
 #Info
 
 - program uruchamiany w terminalu, bez zmiennych

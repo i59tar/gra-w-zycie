@@ -32,7 +32,7 @@ using namespace std;
 
 class Universum{
 public:
-Universum(int _width=WIDTH, int _height=HEIGHT):width(_width),height(_height){
+Universum(const char *_width="140", const char *_height="40"):width(atoi(_width)),height(atoi(_height)){
 	srand(time(NULL));
 	grid=new bool*[height];
 	storage = new char*[height];
@@ -41,8 +41,7 @@ Universum(int _width=WIDTH, int _height=HEIGHT):width(_width),height(_height){
 		grid[i]=new bool[width];
 		storage[i]=new char[width];
 		for(int j=0;j<width;j++){
-			int f=(rand()%3);
-			grid[i][j]=(bool)f;
+			grid[i][j]=(rand()%3==1?1:0);
 			storage[i][j]=0;
 			}
 		}
@@ -95,11 +94,11 @@ void render(){
 	cout<<endl;
 } //funkcja renderujaca tablice i wyswietlajaca ja na konsoli
 
-void Start(){
+void Start(const char *ms){
 	while(true){
 		system("clear");
 		render();
-		delay(50);
+		delay(atoi(ms));
 		life();
 	}
 }
@@ -113,8 +112,8 @@ int generation; //numer pokolenia komorek
 };
 
 int main(int argc, char *argv[]){
-	Universum A;
-	A.Start();
+	Universum A((argc>1?argv[1]:"140"),(argc>2?argv[2]:"40"));
+	A.Start(argc==4?argv[3]:"50");
 	return 0;
 
 }
