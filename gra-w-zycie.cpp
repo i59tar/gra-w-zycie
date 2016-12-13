@@ -47,7 +47,14 @@ Universum(const char *_width="140", const char *_height="40"):width(atoi(_width)
 		}
 			
 } //konstruktor-inicjalizator
-
+~Universum(){
+	for(int i=0;i<height;i++){
+		delete grid[i];
+		delete storage[i];
+		}
+	delete *grid;
+	delete *storage;
+}
 void putNeighbors(int x, int y){
 	int i=x+height-1,j=y+width-1;
 	storage[i%height][j%width]+=1;
