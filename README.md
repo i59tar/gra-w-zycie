@@ -2,7 +2,8 @@
 Gra w życie. Język: C/C++
 
 #changelog
-
+V0.3
+- Teraz można wprowadzać zmienne nieliczbowe w terminalu (ale program ma swoją cierpliwość...)
 V0.2
 - Teraz można w terminalu wprowadzić dodatkowe zmienne:
 - - 1. zmienna - decyduje o szerokości tablicy
@@ -10,6 +11,7 @@ V0.2
 - - 3. zmienna - decyduje o odstępie czasowym między pokoleniami komórek (w milisekundach)
 Zaleca się używania odstępów czasowych większych niż 30 (ms) z powodu 'migotania' ekranu
 
+Ustawienie domyślne: szer - 140 znaków, wys - 40 znaków, odstęp - 50 milisekund
 #Info
 
 - program uruchamiany w terminalu, bez zmiennych
