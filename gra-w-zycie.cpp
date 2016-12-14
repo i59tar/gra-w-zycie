@@ -91,11 +91,14 @@ void render(){
 			}
 		cout<<"|"<<endl;
 		}
-	for(int j=0;j<width-28;j++){
+	for(int j=0;j<width;j++){
 		cout<<"-";
-		if(j==round((width-56)/2)){
-			cout.width(28);
-			if (funflag) cout<<"Pokolenie: "<<generation;
+		if(j==round((width-28)/2)){
+			cout.width(14);
+			if (funflag){
+				cout<<"Pokolenie: "<<generation;
+				j+=14;
+			}
 			else cout<<"Nastepnym razem wpisz liczby";
 			}
 		}
@@ -121,11 +124,11 @@ int generation; //numer pokolenia komorek
 
 int main(int argc, char *argv[]){
 	bool funflag=true;
-	if(!atoi(argv[1])){
+	if(argc>1 && !atoi(argv[1])){
 		argv[1]="140";
 		funflag=false;
 	}
-	if(!atoi(argv[2])){
+	if(argc>2 && !atoi(argv[2])){
 		if(!funflag){
 			cout<<"Widze do czego zmierzasz."<<endl;
 			return 1;
@@ -133,7 +136,7 @@ int main(int argc, char *argv[]){
 		argv[2]="40";
 		funflag=false;
 	}
-	if(!atoi(argv[3])){
+	if(argc>4 && !atoi(argv[3])){
 		if(!funflag){
 			cout<<"Widze do czego zmierzasz."<<endl;
 			return 1;
