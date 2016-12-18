@@ -1,8 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
-#include <math.h>
 #include <iostream>
-
 using namespace std;
 
 //time delay function:
@@ -29,7 +27,7 @@ using namespace std;
 
 class Universum{
 public:
-Universum(const char *_width, const char *_height, bool _funflag):width(atoi(_width)),height(atoi(_height)),funflag(_funflag){
+Universum(int _width, int _height):width(_width),height(_height){
 	srand(time(NULL));
 	grid=new bool*[height];
 	storage = new char*[height];
@@ -93,23 +91,20 @@ void render(){
 		}
 	for(int j=0;j<width;j++){
 		cout<<"-";
-		if(j==round((width-28)/2)){
+		if(j==(width-14)/2){
 			cout.width(14);
-			if (funflag){
 				cout<<"Pokolenie: "<<generation;
 				j+=14;
-			}
-			else cout<<"Nastepnym razem wpisz liczby";
 			}
 		}
 	cout<<endl;
 } //funkcja renderujaca tablice i wyswietlajaca ja na konsoli
 
-void Start(const char *ms){
+void Start(int ms){
 	while(true){
 		system("clear");
 		render();
-		delay(atoi(ms));
+		delay(ms);
 		life();
 	}
 }
@@ -118,35 +113,13 @@ char **storage; //przechowalnia dla liczby sasiadow
 
 int width;//wymiary
 int height;//wymiary
-bool funflag;
 int generation; //numer pokolenia komorek
 };
 
 int main(int argc, char *argv[]){
-	bool funflag=true;
-	if(argc>1 && !atoi(argv[1])){
-		argv[1]="140";
-		funflag=false;
-	}
-	if(argc>2 && !atoi(argv[2])){
-		if(!funflag){
-			cout<<"Widze do czego zmierzasz."<<endl;
-			return 1;
-		}
-		argv[2]="40";
-		funflag=false;
-	}
-	if(argc>4 && !atoi(argv[3])){
-		if(!funflag){
-			cout<<"Widze do czego zmierzasz."<<endl;
-			return 1;
-		}
-		argv[3]="50";
-		funflag=false;
-	}
-	Universum A((argc>1?argv[1]:"140"),(argc>2?argv[2]:"40"),funflag);
+	Universum A(((argc>1&&atoi(argv[1]))?atoi(argv[1]):140),((argc>2&&atoi(argv[2]))?atoi(argv[2]):40));
 	
-	A.Start(argc==4?argv[3]:"50");
+	A.Start((argc==4&&atoi(argv[3]))?atoi(argv[3]):50);
 	return 0;
 
 }
